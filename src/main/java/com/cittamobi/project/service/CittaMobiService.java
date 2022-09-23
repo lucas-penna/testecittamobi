@@ -9,9 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class CittaMobiService {
@@ -31,6 +29,7 @@ public class CittaMobiService {
                 vehicleDataList.add(vehicleData);
             }
         });
+        Collections.sort(vehicleDataList, Comparator.comparing(VehicleData::getRouteMnemonic));
         return vehicleDataList;
     }
 }
